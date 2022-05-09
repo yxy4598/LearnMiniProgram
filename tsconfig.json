@@ -1,23 +1,45 @@
 {
   "compilerOptions": {
+    // 目标代码(ts -> js(es5/6/7)) 因为这里我们使用的是babel来处理, babel会根据.browserslistrc文件中的配置选项，来适配不同的es版本对应不同的浏览器
     "target": "esnext",
-    "module": "esnext",
+    // 目标代码需要使用的模块化方案(commonjs require/module.exports/ es module import/export)
+    // webpack打包工具会根据babel来处理
+    "module": "esnext",  //"umd"适配多种模式
+    // 严格一些严格的检查(any)
     "strict": true,
-    "jsx": "preserve",
+    // 对jsx进行怎么样的处理
+    "jsx": "preserve", //默认不处理
+    // 辅助的导入功能 (未来有些浏览器不支持我们当前所写的语法，会通过ployfill技术进行填充，然后导入填充代码)
+    // importHelpers: true
+
+    // 按照node方式去解析模块
     "moduleResolution": "node",
+    // 跳过对一些库的类型检测(比如: 我们引入了第三方库，本身它里边的有很多我们不需要的类型，我们不希望对它进行检测)
     "skipLibCheck": true,
+    // export default/ module.exports ={}
+    // es module 和 commonjs 是否可以混合使用
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    // TypeScript 遵循运行它的文件系统的区分大小写规则。 如果一些开发人员在区分大小写的文件系统中工作而其他开发人员不是，这可能会出现问题。 如果文件尝试通过指定 ./FileManager.ts 来导入 fileManager.ts，则该文件将在不区分大小写的文件系统中找到，但不在区分大小写的文件系统中。
+    // 设置此选项后，如果程序尝试通过与磁盘上的大小写不同的大小写来包含文件，TypeScript 将发出错误。
     "forceConsistentCasingInFileNames": true,
+    // 此标志用作迁移到即将推出的标准版本的类字段的一部分。 TypeScript 在 TC39 批准之前多年就引入了类字段。 即将发布的规范的最新版本与 TypeScript 的实现有不同的运行时行为，但语法相同。
+    // 此标志切换到即将到来的 ECMA 运行时行为。
     "useDefineForClassFields": true,
+    // 生成映射文件(ts -> js)
     "sourceMap": true,
+    // 文件路径在解析时，使用的url
     "baseUrl": ".",
+    // 指定具体要解析使用的类型
     "types": ["webpack-env"],
+    // 路径解析(类似于webpack alias)
     "paths": {
       "@/*": ["src/*"]
     },
+    // 可以指定项目中可以使用哪些库的类型(Proxy/window/document)
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
+  // 分析哪些代码需要进行解析
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -25,5 +47,6 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
+  // node_modules中的代码不需要进行解析，所以就将其排除
   "exclude": ["node_modules"]
 }
