@@ -76,3 +76,5 @@ XYRequest.get<DataType>({
   // console.log(res.returnCode)
   // console.log(res.success)
 })
+
+console.log('当前标签是v0.0.2')
