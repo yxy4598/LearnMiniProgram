@@ -50,6 +50,7 @@ export default defineComponent({
 
     const handleLoginClick = () => {
       accountRef.value?.loginAction()
+      console.log('111')
     }
 
     return {
