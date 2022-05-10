@@ -78,3 +78,4 @@ XYRequest.get<DataType>({
 })
 
 console.log('当前标签是v0.0.2')
+console.log('当前标签是v0.0.3')
