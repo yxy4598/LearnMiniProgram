@@ -1,6 +1,7 @@
 // service统一出口
 import XYRequest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
+import localCache from '@/utils/cache'
 import type { AxiosRequestHeaders } from 'axios'
 
 const xyRequest = new XYRequest({
@@ -10,7 +11,7 @@ const xyRequest = new XYRequest({
     requestInterceptor: (config) => {
       // 携带token的拦截
       // 一般token存储到vuex中
-      const token = ''
+      const token = localCache.getCache('token')
       if (token) {
         // 这里使用类型断言新版本config.headers类型为 AxiosRequestHeaders<T> | undefined
         ;(

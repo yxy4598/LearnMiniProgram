@@ -59,9 +59,7 @@ class XYRequest {
         // console.log('所有实例响应成功的拦截')
 
         // 将loading移除
-        setTimeout(() => {
-          this.loading?.close()
-        }, 2000)
+        this.loading?.close()
 
         const data = res.data
         if (data.returnCode === '-1001') {

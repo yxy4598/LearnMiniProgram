@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import localCache from '@/utils/cache'
 
 // 这里type是说明这里导入的是一个类型
 import type { RouteRecordRaw } from 'vue-router'
@@ -6,7 +7,7 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/main'
   },
   {
     path: '/login',
@@ -21,6 +22,15 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   routes: routes,
   history: createWebHistory()
+})
+
+router.beforeEach((to) => {
+  if (to.path !== '/login') {
+    const token = localCache.getCache('token')
+    if (!token) {
+      return '/login'
+    }
+  }
 })
 
 export default router

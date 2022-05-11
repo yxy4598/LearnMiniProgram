@@ -9,7 +9,6 @@ import './assets/css/index.less'
 import { globalRegister } from './global'
 
 // import './service/axios_demo'
-import XYRequest from './service'
 
 // 全局导入element-plus
 // import ElementPlus from 'element-plus'
@@ -21,58 +20,13 @@ import 'element-plus/theme-chalk/el-loading.css'
 
 import router from './router'
 import store from './store'
+import { setupStore } from './store'
 
 const app = createApp(App)
 
 app.use(router)
 app.use(store)
+setupStore()
 app.use(globalRegister)
 // app.use(ElementPlus)
 app.mount('#app')
-
-// 打印.env.development文件中定义的常量
-// console.log(process.env.VUE_APP_BASE_URL)
-// console.log(process.env.VUE_APP_BASE_NAME)
-
-// XYRequest.request({
-//   url: '/home/multidata',
-//   method: 'GET',
-//   intercepotors: {
-//     requestInterceptor: (config) => {
-//       console.log('单独请求的config')
-//       return config
-//     },
-//     responseInterceptor: (res) => {
-//       console.log('单独响应的res')
-//       return res
-//     }
-//   }
-// })
-
-interface DataType {
-  data: any
-  returnCode: string
-  success: boolean
-}
-
-// XYRequest.request<DataType>({
-//   url: '/home/multidata',
-//   method: 'GET',
-//   showLoading: false
-// }).then((res) => {
-//   console.log(res.data)
-//   console.log(res.returnCode)
-//   console.log(res.success)
-// })
-
-XYRequest.get<DataType>({
-  url: '/home/multidata',
-  showLoading: false
-}).then((res) => {
-  // 为了不打印
-  return res
-  // console.log(res)
-  // console.log(res.data)
-  // console.log(res.returnCode)
-  // console.log(res.success)
-})
