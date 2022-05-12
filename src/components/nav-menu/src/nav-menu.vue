@@ -27,7 +27,10 @@
             </template>
             <!-- 遍历里面的item -->
             <template v-for="subitem in item.children" :key="subitem.id">
-              <el-menu-item :index="subitem.id + ''">
+              <el-menu-item
+                :index="subitem.id + ''"
+                @click="handleMenuItemClick(subitem)"
+              >
                 <i v-if="subitem.icon">
                   <el-icon
                     ><component :is="iconApiRepair(subitem.icon)"></component
@@ -57,6 +60,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from '@/store'
+import { useRouter } from 'vue-router'
 import { iconApiRepair } from '@/utils/utils'
 
 export default defineComponent({
@@ -68,10 +72,18 @@ export default defineComponent({
   },
   setup() {
     const store = useStore()
+    const router = useRouter()
     const userMenus = computed(() => store.state.login.userMenus)
+
+    const handleMenuItemClick = (item: any) => {
+      router.push({
+        path: item.url
+      })
+    }
     return {
       userMenus,
-      iconApiRepair
+      iconApiRepair,
+      handleMenuItemClick
     }
   }
 })

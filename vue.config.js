@@ -11,7 +11,7 @@ module.exports = defineConfig({
   outputDir: './build',
   // 开发环境下测试dict/build打包完成的服务
   // 上传到服务器不需要设置
-  publicPath: './',
+  // publicPath: './',
 
   devServer: {
     // 解决跨域问题
