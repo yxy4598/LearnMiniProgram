@@ -1,31 +1,25 @@
 <template>
   <div class="user">
     <div class="search">
-      <el-form>
-        <el-form-item label="用户名">
-          <el-input />
-        </el-form-item>
-        <el-form-item label="用户名">
-          <el-input />
-        </el-form-item>
-        <el-form-item label="用户名">
-          <el-input />
-        </el-form-item>
-        <el-form-item label="用户名">
-          <el-input />
-        </el-form-item>
-      </el-form>
+      <xy-form v-bind="searchFormConfig" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import XyForm from '@/base-ui/form'
+import { searchFormConfig } from './config/serch.config'
 
 export default defineComponent({
   name: 'user',
+  components: {
+    XyForm
+  },
   setup() {
-    return {}
+    return {
+      searchFormConfig
+    }
   }
 })
 </script>
