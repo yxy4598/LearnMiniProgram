@@ -5,21 +5,25 @@
       <el-icon v-if="isFold"><expand /></el-icon>
     </i>
     <div class="content">
-      <div>面包屑</div>
-      <div>
-        <user-info />
-      </div>
+      <xy-breadcrumb :breadcrumbs="breadcrumbs" />
+      <user-info />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import UserInfo from './cpns/user-info.vue'
+import XyBreadcrumb from '@/base-ui/breadcrumb'
+
+import { useRoute } from 'vue-router'
+import { useStore } from '@/store'
+import { pathMapBreadcrumbs } from '@/utils/map-menus'
 
 export default defineComponent({
   components: {
-    UserInfo
+    UserInfo,
+    XyBreadcrumb
   },
   emits: ['foldChange'],
   setup(porps, { emit }) {
@@ -28,8 +32,21 @@ export default defineComponent({
       isFold.value = !isFold.value
       emit('foldChange', isFold.value)
     }
+
+    // 面包屑数据
+    const store = useStore()
+
+    const route = useRoute()
+
+    const breadcrumbs = computed(() => {
+      const userMenus = store.state.login.userMenus
+      const currentPath = route.path
+      return pathMapBreadcrumbs(userMenus, currentPath)
+    })
+
     return {
       isFold,
+      breadcrumbs,
       handleFoldClick
     }
   }
