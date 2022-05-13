@@ -18,7 +18,7 @@ import type { IBreadcrumb } from '../type'
 export default defineComponent({
   props: {
     breadcrumbs: {
-      type: Array as PropType<IBreadcrumb>,
+      type: Array as PropType<IBreadcrumb[]>,
       default: () => []
     }
   },

@@ -52,6 +52,10 @@ import { defineComponent, PropType } from 'vue'
 import type { IFormItem } from '../types'
 export default defineComponent({
   props: {
+    formData: {
+      type: Object,
+      required: true
+    },
     formItems: {
       type: Array as PropType<IFormItem[]>,
       default: () => []

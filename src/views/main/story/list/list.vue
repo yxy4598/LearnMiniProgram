@@ -1,25 +1,17 @@
 <template>
   <div class="list">
-    <div class="search">
-      <xy-form v-bind="searchFormConfig" />
-    </div>
+    <h2>list</h2>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import XyForm from '@/base-ui/form'
-import { searchFormConfig } from './config/serch.config'
 
 export default defineComponent({
   name: 'list',
-  components: {
-    XyForm
-  },
+  components: {},
   setup() {
-    return {
-      searchFormConfig
-    }
+    return {}
   }
 })
 </script>
