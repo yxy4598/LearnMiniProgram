@@ -86,7 +86,7 @@ class XYRequest {
     )
   }
 
-  request<T>(config: XYRequestConfig<T>): Promise<T> {
+  request<T = any>(config: XYRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // 1.单个请求对请求的config的处理
       if (config.interceptors?.requestInterceptor) {
@@ -119,19 +119,19 @@ class XYRequest {
     })
   }
 
-  get<T>(config: XYRequestConfig<T>): Promise<T> {
+  get<T = any>(config: XYRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
 
-  post<T>(config: XYRequestConfig<T>): Promise<T> {
+  post<T = any>(config: XYRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
 
-  delete<T>(config: XYRequestConfig<T>): Promise<T> {
+  delete<T = any>(config: XYRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
 
-  patch<T>(config: XYRequestConfig<T>): Promise<T> {
+  patch<T = any>(config: XYRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }

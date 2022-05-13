@@ -1,6 +1,7 @@
 import xyRequest from '../index'
 
-import type { IAccount, IDataType, ILoginResult, IUserInfo } from './type'
+import type { IAccount, ILoginResult, IUserInfo } from './type'
+import type { IDataType } from '@/service/types'
 
 enum LoginAPI {
   AccountLogin = '/login',

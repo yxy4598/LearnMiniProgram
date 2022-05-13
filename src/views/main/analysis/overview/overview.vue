@@ -1,32 +1,24 @@
 <template>
   <div class="overview">
     <div class="search">
-      <xy-form v-bind="searchFormConfig" :formData="formData" />
+      <page-search :searchFormConfig="searchFormConfig"></page-search>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
-import XyForm from '@/base-ui/form'
+import { defineComponent } from 'vue'
+import PageSearch from '@/components/page-search'
+
 import { searchFormConfig } from './config/serch.config'
 
 export default defineComponent({
   name: 'overview',
   components: {
-    XyForm
+    PageSearch
   },
   setup() {
-    const formData = reactive({
-      id: '',
-      name: '',
-      password: '',
-      sport: '',
-      createTime: ''
-    })
-
     return {
-      formData,
       searchFormConfig
     }
   }

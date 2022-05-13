@@ -10,7 +10,9 @@ import {
   Goods,
   ChatLineRound,
   ArrowDown,
-  CircleClose
+  CircleClose,
+  RefreshLeft,
+  Search
 } from '@element-plus/icons-vue'
 const components = [
   ElButton,
@@ -23,7 +25,9 @@ const components = [
   Goods,
   ChatLineRound,
   ArrowDown,
-  CircleClose
+  CircleClose,
+  RefreshLeft,
+  Search
 ]
 
 export function registelElement(app: App): void {
