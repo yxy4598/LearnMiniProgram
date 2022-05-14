@@ -12,7 +12,11 @@ import {
   ArrowDown,
   CircleClose,
   RefreshLeft,
-  Search
+  Search,
+  Edit,
+  Delete,
+  Refresh,
+  Plus
 } from '@element-plus/icons-vue'
 const components = [
   ElButton,
@@ -27,10 +31,14 @@ const components = [
   ArrowDown,
   CircleClose,
   RefreshLeft,
-  Search
+  Search,
+  Edit,
+  Delete,
+  Refresh,
+  Plus
 ]
 
-export function registelElement(app: App): void {
+export default function registelElement(app: App): void {
   for (const component of components) {
     app.component(component.name, component)
   }
